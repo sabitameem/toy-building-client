@@ -1,12 +1,17 @@
 import { Link } from "react-router-dom";
 import logo from '../../public/logo.avif'
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
+   const {user}= useContext(AuthContext)
+  console.log(user)
+
   return (
     <div className="navbar bg-base-100">
       <div className="flex-1">
       <img className="w-12 h-12" src={logo} alt="" />
-        <Link to="/" className="btn btn-ghost normal-case text-xl">
+        <Link to="/" className="normal-case text-2xl font-semibold">
           Toy Building
         </Link>
       </div>
@@ -49,7 +54,7 @@ const Navbar = () => {
         <div className="">
           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
             <div className="w-10 rounded-full">
-              <img src="/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+              <img src='' />
             </div>
           </label>
         </div>
