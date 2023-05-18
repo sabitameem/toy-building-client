@@ -53,10 +53,11 @@ const Navbar = () => {
    { user?
        <>
          <div className="dropdown dropdown-end lg:block hidden mr-3">
-          <Link className="ml-4 mr-4" to="/allToys">All Toys</Link>
-          <Link className=" mr-4" to="/addAToys">Add a Toys</Link>
-          <Link className=" mr-4" to="/myToys">My Toys</Link>
-          <Link className=" mr-4" to="/blog">Blog</Link>
+         <Link className="font-semibold mr-4" to="/">Home</Link>
+          <Link className="font-semibold mr-4" to="/allToys">All Toys</Link>
+          <Link className="font-semibold mr-4" to="/addAToys">Add a Toys</Link>
+          <Link className="font-semibold mr-4" to="/myToys">My Toys</Link>
+          <Link className="font-semibold mr-4" to="/blog">Blog</Link>
           <button onClick={handleLogOut} className="btn btn-ghost">Log Out</button>
           
         </div>
@@ -69,8 +70,11 @@ const Navbar = () => {
         </div>
         
     </>
-        : 
-        <button>Login</button>
+        :
+        <>
+        <Link className="font-semibold mr-4" to="/">Home</Link> 
+       <Link to='/login'><button className="btn btn-ghost mr-3 font-bold">LogIn</button></Link>
+        </>
 }
 
 
