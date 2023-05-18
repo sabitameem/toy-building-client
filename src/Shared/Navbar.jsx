@@ -4,8 +4,13 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Navbar = () => {
-   const {user}= useContext(AuthContext)
+   const {user,logOut}= useContext(AuthContext)
   console.log(user)
+  const handleLogOut = () => {
+    logOut()
+      .then()
+      .catch((error) => console.log(error));
+  };
 
   return (
     <div className="navbar bg-base-100">
@@ -44,20 +49,29 @@ const Navbar = () => {
             <Link to="/blog">Blog</Link>
           </ul>
           </div>
-
-        <div className="dropdown dropdown-end lg:block hidden mr-3">
+   
+   { user?
+       <>
+         <div className="dropdown dropdown-end lg:block hidden mr-3">
           <Link className="ml-4 mr-4" to="/allToys">All Toys</Link>
           <Link className=" mr-4" to="/addAToys">Add a Toys</Link>
           <Link className=" mr-4" to="/myToys">My Toys</Link>
           <Link className=" mr-4" to="/blog">Blog</Link>
+          <button onClick={handleLogOut} className="btn btn-ghost">Log Out</button>
+          
         </div>
-        <div className="">
-          <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-            <div className="w-10 rounded-full">
+        <div className="dropdown dropdown-end">
+           <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+            <div className="w-10 rounded-full btn btn-ghost btn-circle avatar">
               <img src='' />
             </div>
-          </label>
+          </label> 
         </div>
+        
+    </>
+        : 
+        <button>Login</button>
+}
 
 
       </div>
