@@ -33,10 +33,10 @@ const AddAToys = () => {
         },
         body: JSON.stringify(addAToy)
     })
-    .then(res=> res.json())
-    .then(data=>{
-        console.log(data)
-    })
+    .then((data) => data.json())
+      .then((response) => {
+        console.log(response);
+      });
 
     
   };
