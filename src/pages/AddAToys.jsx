@@ -24,8 +24,19 @@ const AddAToys = () => {
     const availableQuantity=form.availableQuantity.value;
     const description=form.description.value;
     console.log(picture,name,sellerName,sellerEmail,subCategory,price,rating,availableQuantity,description);
+    const addAToy={picture,name,sellerName,sellerEmail,subCategory,price,rating,availableQuantity,description};
     
-
+    fetch('http://localhost:5000/addAToy',{
+        method: 'POST',
+        headers:{
+            'content-type': 'application/json',
+        },
+        body: JSON.stringify(addAToy)
+    })
+    .then(res=> res.json())
+    .then(data=>{
+        console.log(data)
+    })
 
     
   };
