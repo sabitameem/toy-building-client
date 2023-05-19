@@ -1,15 +1,8 @@
-//import { useState } from 'react';
+import Swal from "sweetalert2";
+//import Swal from 'sweetalert2';
 
 const AddAToys = () => {
-//   const [pictureUrl, setPictureUrl] = useState('');
-//   const [name, setName] = useState('');
-//   const [sellerName, setSellerName] = useState('');
-//   const [sellerEmail, setSellerEmail] = useState('');
-//   const [subCategory, setSubCategory] = useState('');
-//   const [price, setPrice] = useState('');
-//   const [rating, setRating] = useState('');
-//   const [availableQuantity, setAvailableQuantity] = useState('');
-//   const [description, setDescription] = useState('');
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,7 +19,7 @@ const AddAToys = () => {
     console.log(picture,name,sellerName,sellerEmail,subCategory,price,rating,availableQuantity,description);
     const addAToy={picture,name,sellerName,sellerEmail,subCategory,price,rating,availableQuantity,description};
     
-    fetch('http://localhost:5000/addAToy',{
+    fetch('https://toy-building-server.vercel.app/addAToy',{
         method: 'POST',
         headers:{
             'content-type': 'application/json',
@@ -36,6 +29,15 @@ const AddAToys = () => {
     .then((data) => data.json())
       .then((response) => {
         console.log(response);
+        // if(response.insertedId){
+        //     alert('added new toy successfully')
+        //     // Swal.fire({
+        //     //     icon: 'error',
+        //     //     title: 'Oops...',
+        //     //     text: 'Something went wrong!',
+        //     //     footer: '<a href="">Why do I have this issue?</a>'
+        //     //   });
+        // }
       });
 
     
