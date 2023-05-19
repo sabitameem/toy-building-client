@@ -1,8 +1,9 @@
-import Swal from "sweetalert2";
-//import Swal from 'sweetalert2';
+import { useContext } from "react";
+import { AuthContext } from "../Provider/AuthProvider";
 
 const AddAToys = () => {
-
+ 
+  const {user}=useContext(AuthContext)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -10,14 +11,14 @@ const AddAToys = () => {
     const picture=form.picture.value;
     const name=form.name.value;
     const sellerName=form.sellerName.value;
-    const sellerEmail=form.sellerEmail.value;
+    //const sellerEmail=form.sellerEmail.value;
     const subCategory=form.subCategory.value;
     const price=form.price.value;
     const rating=form.rating.value;
     const availableQuantity=form.availableQuantity.value;
     const description=form.description.value;
-    console.log(picture,name,sellerName,sellerEmail,subCategory,price,rating,availableQuantity,description);
-    const addAToy={picture,name,sellerName,sellerEmail,subCategory,price,rating,availableQuantity,description};
+    console.log(picture,name,sellerName,subCategory,price,rating,availableQuantity,description);
+    const addAToy={picture,name,sellerName,subCategory,price,rating,availableQuantity,description};
     
     fetch('https://toy-building-server.vercel.app/addAToy',{
         method: 'POST',
@@ -29,15 +30,7 @@ const AddAToys = () => {
     .then((data) => data.json())
       .then((response) => {
         console.log(response);
-        // if(response.insertedId){
-        //     alert('added new toy successfully')
-        //     // Swal.fire({
-        //     //     icon: 'error',
-        //     //     title: 'Oops...',
-        //     //     text: 'Something went wrong!',
-        //     //     footer: '<a href="">Why do I have this issue?</a>'
-        //     //   });
-        // }
+       
       });
 
     
@@ -52,7 +45,7 @@ const AddAToys = () => {
             Picture URL of the toy
           </label>
           <input
-            type="text"
+            type="url"
             name="picture"
             className="input input-bordered w-full"
            
@@ -78,6 +71,7 @@ const AddAToys = () => {
           <input
             type="text"
             name="sellerName"
+          //  defaultValue={user?.displayName}
             className="input input-bordered w-full"
            
             
@@ -90,6 +84,7 @@ const AddAToys = () => {
           <input
             type="email"
             name="sellerEmail"
+            defaultValue={user?.email}
             className="input input-bordered w-full"
            
            
@@ -108,6 +103,7 @@ const AddAToys = () => {
             <option value="Bus Toys">Bus Toys</option>
             <option value="Truck Toys">Truck Toys</option>
             <option value="Car Toys">Car Toys</option>
+            
           </select>
         </div>
         <div className="mb-4">
@@ -115,7 +111,7 @@ const AddAToys = () => {
             Price
           </label>
           <input
-            type="number"
+            type=""
             name="price"
             className="input input-bordered w-full"
             
