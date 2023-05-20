@@ -72,7 +72,9 @@ const Navbar = () => {
     </>
         :
         <>
-        <Link className="font-semibold mr-4" to="/">Home</Link> 
+        <Link className="font-semibold mr-4" to="/">Home</Link>
+        <Link className="font-semibold mr-4" to="/allToys">All Toys</Link> 
+        <Link className="font-semibold mr-4" to="/blog">Blog</Link>
        <Link to='/login'><button className="btn btn-ghost mr-3 font-bold">LogIn</button></Link>
         </>
 }

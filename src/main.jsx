@@ -15,6 +15,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import ErrorPage from './pages/ErrorPage';
 import AuthProvider from './Provider/AuthProvider';
+import PrivateRoute from './Provider/PrivateRoute';
 
 const router = createBrowserRouter([
   {
@@ -28,7 +29,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/myToys',
-        element:<MyToys></MyToys>
+        element:<PrivateRoute><MyToys></MyToys></PrivateRoute>
       },
       {
         path:'/allToys',
@@ -36,7 +37,7 @@ const router = createBrowserRouter([
       },
       {
         path:'/addAToys',
-        element: <AddAToys></AddAToys>
+        element: <PrivateRoute><AddAToys></AddAToys></PrivateRoute>
       },
       {
         path: '/blog',

@@ -1,5 +1,5 @@
-import { useContext} from "react";
-import { Link } from "react-router-dom";
+import { useContext, useState} from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 import SocialButton from "../Shared/SocialButton";
@@ -7,8 +7,11 @@ import SocialButton from "../Shared/SocialButton";
 
 const Login = () => {
   const {signIn}=useContext(AuthContext)
-
-  
+  const navigate =useNavigate()
+  const location =useLocation()
+  console.log(location)
+  const from =location.state?.from || "/"
+  const [error,setError]=useState('')
   
   // const handleLogIn =event=>{
   //   event.preventDefault();
@@ -27,8 +30,9 @@ const Login = () => {
         .then(result => {
             const user = result.user;
             console.log(user);
+            navigate(from,)
         })
-        .catch(error => console.log(error));
+        .catch(error => setError(error.toString()));
 }
 
 
@@ -45,6 +49,7 @@ const Login = () => {
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             name="email"
             type="email"
+            required
             placeholder="Enter your email address"
           />
         </div>
@@ -56,13 +61,16 @@ const Login = () => {
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
             name="password"
             type="password"
+            required
             placeholder="Enter your password"
           />
         </div>
-        <div className="flex items-center justify-between mb-4">
+        {error && <p className="text-red-500 mb-3">Error: {error}</p>}
+        <div className="flex items-center justify-between mb-4 mt-2">
           <button className="bg-gray-500 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
             Login
           </button>
+          
 
           <SocialButton></SocialButton>
           {/* <div>

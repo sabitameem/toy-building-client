@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import SocialButton from "../Shared/SocialButton";
 
@@ -8,6 +8,11 @@ const Register = () => {
   
   
   const { createUser } = useContext(AuthContext);
+  const navigate=useNavigate()
+  const location =useLocation()
+  console.log(location)
+  const from =location.state?.from || "/"
+  const [error,setError]=useState('')
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -18,13 +23,16 @@ const Register = () => {
     const photoURL = form.photo.value; // Get the value of the photo input
     console.log(name, email, password, photoURL);
     createUser(email, password)
+    
+      
       .then((result) => {
         const user = result.user;
         
         console.log(user.displayName)
         console.log('created user', user);
+        navigate(from,)
       })
-      .catch((error) => console.log(error));
+      .catch(error => setError(error.toString()));
   };
   
 
@@ -41,7 +49,7 @@ const Register = () => {
           </label>
           <input
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            
+            required
             name="name"
             type="text"
             placeholder="Enter your name"
@@ -53,7 +61,7 @@ const Register = () => {
           </label>
           <input
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-            
+            required
             name='email'
             type="email"
             placeholder="Enter your email address"
@@ -65,7 +73,7 @@ const Register = () => {
           </label>
           <input
             className="appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-           
+           required
             name="password"
             type="password"
             placeholder="Enter a strong password"
@@ -83,6 +91,7 @@ const Register = () => {
             placeholder="Enter a URL for your profile photo"
           />
         </div>
+        {error && <p className="text-red-500 mb-3">Error: {error}</p>}
         <div className="flex items-center justify-center">
           <button className="bg-gray-500 hover:bg-gray-800 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
             Register
