@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import app from '../firebase/firebase.config';
 import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const SocialButton = () => {
 
     const [user, setUser] = useState({});
   const auth = getAuth(app);
   const googleProvider = new GoogleAuthProvider();
+  const navigate=useNavigate()
 
   const handleGoogleLogin = () => {
     signInWithPopup(auth, googleProvider)
@@ -14,6 +16,7 @@ const SocialButton = () => {
         const user = result.user;
         setUser(user);
         console.log(user);
+        navigate('/')
       })
       .catch((error) => {
         const errorMessage = error.message;

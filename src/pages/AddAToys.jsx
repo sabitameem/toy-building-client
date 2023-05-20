@@ -107,7 +107,6 @@ const AddAToys = () => {
           <input
             type="text"
             name="sellerName"
-            //  defaultValue={user?.displayName}
             className="input input-bordered w-full"
           />
         </div>
@@ -116,7 +115,6 @@ const AddAToys = () => {
           <input
             type="email"
             name="sellerEmail"
-            defaultValue={user?.email}
             className="input input-bordered w-full"
           />
         </div>
