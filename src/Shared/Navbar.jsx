@@ -48,6 +48,7 @@ const Navbar = () => {
             <Link to="/addAToys">Add a Toys</Link>
             <Link to="/myToys">My Toys</Link>
             <Link to="/blog">Blog</Link>
+            {(user) && <button onClick={handleLogOut} className="btn btn-ghost  lg:btn-md">Log Out</button>}
 
           </ul>
           </div>
