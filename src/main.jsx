@@ -17,6 +17,7 @@ import ErrorPage from './pages/ErrorPage';
 import AuthProvider from './Provider/AuthProvider';
 import PrivateRoute from './Provider/PrivateRoute';
 import DetailsToys from './pages/DetailsToys';
+import UpdateMyToy from './pages/UpdateMyToy';
 
 const router = createBrowserRouter([
   {
@@ -31,10 +32,16 @@ const router = createBrowserRouter([
       {
         path:'/myToys',
         element:<PrivateRoute><MyToys></MyToys></PrivateRoute>
+        
       },
       {
         path: '/detailsToys/:id',
         element: <PrivateRoute><DetailsToys></DetailsToys></PrivateRoute>,
+        loader: ({params})=> fetch(`https://toy-building-server.vercel.app/addAToy/${params.id}`)
+      },
+      {
+        path: '/myToys/updateMyToy/:id',
+        element: <PrivateRoute><UpdateMyToy></UpdateMyToy></PrivateRoute>,
         loader: ({params})=> fetch(`https://toy-building-server.vercel.app/addAToy/${params.id}`)
       },
       {

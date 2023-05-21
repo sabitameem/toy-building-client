@@ -22,7 +22,7 @@ const AllToys = () => {
 
   return (
     <div className="">
-      <p>all toys</p>
+      
       <div className="overflow-x-auto w-full">
         <table className="table w-full">
           {/* head */}

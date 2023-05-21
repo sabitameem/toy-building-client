@@ -156,7 +156,7 @@ const AddAToys = () => {
           />
         </div>
         <div className="mt-6">
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-block">
             Submit
           </button>
         </div>
