@@ -3,9 +3,11 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 import SocialButton from "../Shared/SocialButton";
+import useTitle from "../hook/useTitle";
 
 
 const Login = () => {
+  useTitle('Login')
   const {signIn}=useContext(AuthContext)
   const navigate =useNavigate()
   const location =useLocation()
@@ -13,13 +15,6 @@ const Login = () => {
   const from =location.state?.from || "/"
   const [error,setError]=useState('')
   
-  // const handleLogIn =event=>{
-  //   event.preventDefault();
-  //   const form = event.target;
-  //   const email=form.email.value;
-  //   const password=event.password.value;
-  //   console.log(email,password);
-  // }
   const handleLogin = event => {
     event.preventDefault();
     const form = event.target;

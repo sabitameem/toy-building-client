@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import logo from '../../public/logo.avif'
+import logo from '../../src/assets/logo.avif'
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 
@@ -16,8 +16,8 @@ const Navbar = () => {
     <div className="navbar bg-base-100">
       <div className="flex-1">
       <img className="w-12 h-12" src={logo} alt="" />
-        <Link to="/" className="normal-case text-2xl font-semibold">
-          Toy Building
+        <Link to="/" className="normal-case text-pink-400 text-2xl font-semibold">
+          <span className="text-blue-400">Toy</span> Building
         </Link>
       </div>
       <div className="flex-none">
@@ -43,10 +43,12 @@ const Navbar = () => {
             tabIndex={0}
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
+            <Link to="/">Home</Link>
             <Link to="/allToys">All Toys</Link>
             <Link to="/addAToys">Add a Toys</Link>
             <Link to="/myToys">My Toys</Link>
             <Link to="/blog">Blog</Link>
+
           </ul>
           </div>
    
@@ -58,7 +60,7 @@ const Navbar = () => {
           <Link className="font-semibold mr-4" to="/addAToys">Add a Toys</Link>
           <Link className="font-semibold mr-4" to="/myToys">My Toys</Link>
           <Link className="font-semibold mr-4" to="/blog">Blog</Link>
-          <button onClick={handleLogOut} className="btn btn-ghost">Log Out</button>
+          <button onClick={handleLogOut} className="btn btn-ghost  lg:btn-md">Log Out</button>
           
         </div>
         <div className="dropdown dropdown-end">
@@ -72,10 +74,10 @@ const Navbar = () => {
     </>
         :
         <>
-        <Link className="font-semibold mr-4" to="/">Home</Link>
-        <Link className="font-semibold mr-4" to="/allToys">All Toys</Link> 
-        <Link className="font-semibold mr-4" to="/blog">Blog</Link>
-       <Link to='/login'><button className="btn btn-ghost mr-3 font-bold">LogIn</button></Link>
+        <Link className="font-semibold hidden lg:inline mr-4" to="/">Home</Link>
+        <Link className="font-semibold hidden lg:inline mr-4" to="/allToys">All Toys</Link> 
+        <Link className="font-semibold hidden lg:inline mr-4" to="/blog">Blog</Link>
+       <Link to='/login'><button className="btn btn-ghost btn-sm mr-3 font-bold">LogIn</button></Link>
         </>
 }
 

@@ -2,11 +2,12 @@ import { useContext, useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import SocialButton from "../Shared/SocialButton";
+import useTitle from "../hook/useTitle";
 
 
 const Register = () => {
   
-  
+  useTitle('Register')
   const { createUser } = useContext(AuthContext);
   const navigate=useNavigate()
   const location =useLocation()

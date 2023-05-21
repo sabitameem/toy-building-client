@@ -2,9 +2,12 @@ import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer, toast } from "react-toastify";
+import useTitle from "../hook/useTitle";
 
 const AddAToys = () => {
   const { user } = useContext(AuthContext);
+
+  useTitle('Add a Toys')
 
   const handleSubmit = (e) => {
     e.preventDefault();

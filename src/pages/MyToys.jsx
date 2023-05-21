@@ -2,12 +2,13 @@ import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import MySingleToy from './MySingleToy';
 import { ToastContainer } from 'react-toastify';
+import useTitle from '../hook/useTitle';
 
 const MyToys = () => {
   
     const {user}=useContext(AuthContext)
     const [myToys,setMyToys]=useState([])
-
+    useTitle('My toys')
     const url=`https://toy-building-server.vercel.app/addAToy?sellerEmail=${user.email}`
 
     useEffect(()=>{

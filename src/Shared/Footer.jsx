@@ -1,4 +1,4 @@
-import logo from '../../public/logo.avif'
+import logo from '../../src/assets/logo.avif'
 
 const Footer = () => {
   return (

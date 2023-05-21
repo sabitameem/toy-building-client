@@ -1,11 +1,12 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
+import useTitle from "../hook/useTitle";
 
 const UpdateMyToy = () => {
   const updateMyToy = useLoaderData();
   const { _id, price, availableQuantity, description } = updateMyToy;
-
+  useTitle('Update')
   const handleSubmit = (e) => {
     e.preventDefault();
     const form = e.target;
