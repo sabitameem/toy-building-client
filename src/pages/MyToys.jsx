@@ -36,16 +36,16 @@ const MyToys = () => {
                     setLoading(!loading)
                      console.log(data);
                     if (data.deletedCount > 0) {
-                        // toast('🦄 Successfully deleted', {
-                        //     position: "top-right",
-                        //     autoClose: 5000,
-                        //     hideProgressBar: false,
-                        //     closeOnClick: true,
-                        //     pauseOnHover: true,
-                        //     draggable: true,
-                        //     progress: undefined,
-                        //     theme: "light",
-                        //     });
+                        toast('🦄 Successfully deleted', {
+                            position: "top-right",
+                            autoClose: 5000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            theme: "light",
+                            });
                          const remaining = myToys.filter(myToy => myToy._id !== id);
                          console.log(id)
                          console.log(remaining)
