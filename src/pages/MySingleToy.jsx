@@ -4,7 +4,7 @@ import React from 'react';
 import { FaBeer, FaDumpster } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 
-const MySingleToy = ({myToy,handleDelete}) => {
+const MySingleToy = ({myToy,handleDelete,loading}) => {
     const {
         _id,
         picture,
@@ -17,6 +17,9 @@ const MySingleToy = ({myToy,handleDelete}) => {
         availableQuantity,
         description,
       }=myToy
+ 
+
+
     return (
         
             <tr>

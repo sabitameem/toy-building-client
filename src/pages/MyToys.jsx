@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../Provider/AuthProvider';
 import MySingleToy from './MySingleToy';
-import { ToastContainer } from 'react-toastify';
+import { ToastContainer, toast } from 'react-toastify';
 import useTitle from '../hook/useTitle';
 
 const MyToys = () => {
   
     const {user}=useContext(AuthContext)
     const [myToys,setMyToys]=useState([])
+    const [loading,setLoading] = useState(false)
+
     useTitle('My toys')
     const url=`https://toy-building-server.vercel.app/addAToy?sellerEmail=${user.email}`
 
@@ -16,7 +18,12 @@ const MyToys = () => {
         .then(res=> res.json())
         .then(data=> {
             setMyToys(data)})
+            
     },[])
+
+    if(loading){
+        return <p>loading</p>
+    }
 
     const handleDelete = id => {
          const proceed = confirm('Are You sure you want to delete');
@@ -26,19 +33,23 @@ const MyToys = () => {
              })
                  .then(res => res.json())
                 .then(data => {
+                    setLoading(!loading)
                      console.log(data);
                     if (data.deletedCount > 0) {
-                        toast('🦄 Successfully deleted', {
-                            position: "top-right",
-                            autoClose: 5000,
-                            hideProgressBar: false,
-                            closeOnClick: true,
-                            pauseOnHover: true,
-                            draggable: true,
-                            progress: undefined,
-                            theme: "light",
-                            });
+                        // toast('🦄 Successfully deleted', {
+                        //     position: "top-right",
+                        //     autoClose: 5000,
+                        //     hideProgressBar: false,
+                        //     closeOnClick: true,
+                        //     pauseOnHover: true,
+                        //     draggable: true,
+                        //     progress: undefined,
+                        //     theme: "light",
+                        //     });
                          const remaining = myToys.filter(myToy => myToy._id !== id);
+                         console.log(id)
+                         console.log(remaining)
+                         setLoading(false)
                          setMyToys(remaining);
                      }
                  })
@@ -66,7 +77,7 @@ const MyToys = () => {
               <table className="table w-full">
                 <thead>
                     <tr>
-                    <th>Image</th>
+                            <th>Image</th>
                             <th>Toy Name</th>
                             <th>Price</th>
                             <th>Rating</th>
@@ -84,6 +95,7 @@ const MyToys = () => {
                             key={myToy._id}
                             myToy={myToy}
                             handleDelete={handleDelete}
+                            loading={loading}
                             ></MySingleToy>
                             )
                     }
