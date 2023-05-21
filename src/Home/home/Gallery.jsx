@@ -27,7 +27,9 @@ const Gallery = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <h2 className="text-4xl lg:text-6xl font-bold mb-4 text-pink-400 text-center">Toys Collections!!!! <span className='text-yellow-300'>Yaaahhhhh!</span></h2>
+      <div>
+      <h2 data-aos="zoom-in-up" className="text-4xl lg:text-6xl font-bold mb-4 text-pink-400 text-center">Toys Collections!!!! <span className='text-yellow-300'>Yaaahhhhh!</span></h2>
+      </div>
       <p className='text-xl font-semibold text-blue-400 text-center mt-0'>Let's explore.......</p>
       <div className="relative">
         <button
