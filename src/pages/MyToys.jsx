@@ -56,6 +56,7 @@ const MyToys = () => {
          }
     }
 
+
     return (
         <div>
             <ToastContainer
@@ -72,8 +73,16 @@ const MyToys = () => {
       />
       {/* Same as */}
       <ToastContainer />
+      <div className="btn btn-primary">
+        <button
+          
+        >
+          Sort by Price
+        </button>
+        </div>
             
             <div className="overflow-x-auto w-full">
+                
               <table className="table w-full">
                 <thead>
                     <tr>

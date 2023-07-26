@@ -41,7 +41,7 @@ const Register = () => {
 
 
   return (
-    <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-lg">
+    <div className="max-w-md mx-auto mt-10 p-6 mb-[100px] bg-white rounded-lg shadow-lg">
       <h1 className="text-3xl font-bold mb-6">Register</h1>
       <form onSubmit={handleSignUp}>
         <div className="mb-4">
@@ -102,10 +102,17 @@ const Register = () => {
       </form>
 
       <p className="text-center mt-4 font-semibold">Or</p>
+      
       <div className="text-center">
        <SocialButton></SocialButton>
       </div>
-      <p>Already have an account? <Link className="text-purple-600 font-semibold mt-3" to='/login'>Login</Link></p>
+      <div className="text-center">
+          <p className="text-gray-600 mb-2">Already have an account?</p>
+          <Link className="text-gray-500 font-semibold" to="/login">
+          Login
+          </Link>
+        </div>
+      
     </div>
   );
 };
